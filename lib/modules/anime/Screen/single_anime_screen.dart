@@ -34,9 +34,26 @@ class SingleAnimeScreen extends StatelessWidget {
             const SizedBox(height: 10.0),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Text(
-                sAnime.description,
-                style: const TextStyle(fontSize: 20, color: Colors.white70),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      sAnime.description,
+                      style: const TextStyle(fontSize: 20, color: Colors.white70),
+                    ),
+                  ),
+                  Expanded(
+                    child: CachedNetworkImage(
+                      imageUrl: sAnime.image,
+                      placeholder: (_, __) => const CircularProgressIndicator(
+                        strokeWidth: 3.0,
+                        color: Colors.black,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Center(child: Text('Error occurred')),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 20.0),

@@ -27,11 +27,10 @@ class PeopleRepository {
       } else {
         return ResponseState.error();
       }
-    } catch (e,s) {
+    } catch (e) {
       if (e is SocketException) {
         return ResponseState.networkError();
       }
-      print(s);
       return ResponseState.error();
     }
   }
