@@ -7,7 +7,7 @@ class PeopleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<PeopleViewModel>();
+    final viewModel = context.read()<PeopleViewModel>();
     final people = viewModel.people;
     return Scaffold(
       body: ListView(
