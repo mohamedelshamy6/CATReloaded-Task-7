@@ -7,15 +7,15 @@ class PeopleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read()<PeopleViewModel>();
+    final viewModel = context.watch()<PeopleViewModel>();
     final people = viewModel.people;
     return Scaffold(
       body: ListView(
         children: [
           for (final person in people)
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(child: Text(person.eyeColor)),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Center(child: Text('Hello')),
             )
         ],
       ),

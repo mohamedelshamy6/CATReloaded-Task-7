@@ -60,7 +60,7 @@ class SingleAnimeScreen extends StatelessWidget {
             customColumn(
                 'People',
                 context,
-                ChangeNotifierProvider(
+                Provider(
                     create: (_) => PeopleViewModel(peopleUrl: [sAnime.people])
                       ..getPeople(),
                     child: const PeopleScreen())),
