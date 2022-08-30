@@ -1,18 +1,18 @@
-import 'package:cat_task/modules/people/view_models/person_view_model.dart';
+import 'package:cat_task/modules/species/view_models/single_species_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PersonScreen extends StatelessWidget {
-  const PersonScreen({Key? key}) : super(key: key);
+class SingleSpeciesScreen extends StatelessWidget {
+  const SingleSpeciesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<PersonViewModel>();
-    final person = viewModel.person;
+    final viewModel = context.read<SingleSpeciesViewModel>();
+    final singleSpecies = viewModel.species;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          person.name,
+          singleSpecies.name,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
@@ -21,32 +21,27 @@ class PersonScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'ID : ${person.id}',
+              'ID : ${singleSpecies.id}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Name : ${person.name}',
+              'Name : ${singleSpecies.name}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Gender : ${person.gender}',
+              'Classification : ${singleSpecies.classification}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Age : ${person.age}',
+              'Hair colors : ${singleSpecies.hairColors}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Hair color : ${person.hairColor}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Eye color : ${person.eyeColor}',
+              'Eye colors : ${singleSpecies.eyeColors}',
               style: const TextStyle(fontSize: 18),
             ),
           ],

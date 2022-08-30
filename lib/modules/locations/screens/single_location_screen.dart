@@ -1,18 +1,18 @@
-import 'package:cat_task/modules/people/view_models/person_view_model.dart';
+import 'package:cat_task/modules/locations/view_models/single_location_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PersonScreen extends StatelessWidget {
-  const PersonScreen({Key? key}) : super(key: key);
+class SingleLocationScreen extends StatelessWidget {
+  const SingleLocationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<PersonViewModel>();
-    final person = viewModel.person;
+    final viewModel = context.read<SingleLocationViewModel>();
+    final singleLocation = viewModel.location;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          person.name,
+          singleLocation.name,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
@@ -21,32 +21,27 @@ class PersonScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'ID : ${person.id}',
+              'ID : ${singleLocation.id}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Name : ${person.name}',
+              'Name : ${singleLocation.name}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Gender : ${person.gender}',
+              'Climate : ${singleLocation.climate}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Age : ${person.age}',
+              'Surface water : ${singleLocation.surfaceWater}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Hair color : ${person.hairColor}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Eye color : ${person.eyeColor}',
+              'Terrain : ${singleLocation.terrain}',
               style: const TextStyle(fontSize: 18),
             ),
           ],

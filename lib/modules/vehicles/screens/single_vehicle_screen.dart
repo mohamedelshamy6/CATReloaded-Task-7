@@ -1,18 +1,18 @@
-import 'package:cat_task/modules/people/view_models/person_view_model.dart';
+import 'package:cat_task/modules/vehicles/view_models/single_vehicle_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PersonScreen extends StatelessWidget {
-  const PersonScreen({Key? key}) : super(key: key);
+class SingleVehicleScreen extends StatelessWidget {
+  const SingleVehicleScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<PersonViewModel>();
-    final person = viewModel.person;
+    final viewModel = context.read<SingleVehicleViewModel>();
+    final vehicle = viewModel.vehicle;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          person.name,
+          vehicle.name,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
@@ -21,32 +21,27 @@ class PersonScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'ID : ${person.id}',
+              'ID : ${vehicle.id}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Name : ${person.name}',
+              'Name : ${vehicle.name}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Gender : ${person.gender}',
+              'Description : ${vehicle.description}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Age : ${person.age}',
+              'Vehicle class : ${vehicle.vehicleClass}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'Hair color : ${person.hairColor}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Eye color : ${person.eyeColor}',
+              'Length : ${vehicle.length}',
               style: const TextStyle(fontSize: 18),
             ),
           ],

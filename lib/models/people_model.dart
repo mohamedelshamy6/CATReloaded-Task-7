@@ -1,7 +1,7 @@
-class PeopleModel {
+class PersonModel {
   final String id, name, age, eyeColor, hairColor,gender;
 
-  PeopleModel.fromJson(Map<String, dynamic> map)
+  PersonModel.fromJson(Map<String, dynamic> map)
       : id = map['id'] ?? '',
         name = map['name'] ?? '',
         age = map['age'] ?? '',

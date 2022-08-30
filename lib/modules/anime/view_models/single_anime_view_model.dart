@@ -1,6 +1,7 @@
 import '../../../models/anime_model.dart';
 
-class SingleAnimeViewModel{
+class SingleAnimeViewModel {
   final AnimeModel sAnime;
+
   SingleAnimeViewModel({required this.sAnime});
 }

@@ -4,10 +4,10 @@ import '../../../common/response_state.dart';
 import '../../../models/anime_model.dart';
 
 class AnimeViewModel with ChangeNotifier {
-  Future<ResponseState<List<AnimeModel>>>? anime;
+  ResponseState<List<AnimeModel>>? anime;
 
-  Future getAllAnime() async {
-    anime =  fetchAllAnime() ;
+  Future<ResponseState<List<AnimeModel>>?> getAllAnime() async {
+    anime = await fetchAllAnime();
 
     notifyListeners();
     return anime;

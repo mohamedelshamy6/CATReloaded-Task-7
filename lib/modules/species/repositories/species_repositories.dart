@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:cat_task/models/people_model.dart';
+import 'package:cat_task/models/species_model.dart';
 import '../../../common/response_state.dart';
 import 'package:http/http.dart' as http;
 
-class PeopleRepository {
-  static Future<ResponseState<List<PersonModel>>> fetchPeople(
+class SpeciesRepository {
+  static Future<ResponseState<List<SpeciesModel>>> fetchSpecies(
     String url,
   ) async {
     var jsonData = await http.get(Uri.parse(url));
@@ -13,16 +13,17 @@ class PeopleRepository {
       if (jsonData.statusCode == 200) {
         final data = jsonDecode(jsonData.body);
         if (data is Map<String, dynamic>) {
-          final person = PersonModel.fromJson(data);
-          return ResponseState(statusCode: jsonData.statusCode, data: [person]);
+          final species = SpeciesModel.fromJson(data);
+          return ResponseState(
+              statusCode: jsonData.statusCode, data: [species]);
         } else {
-          List<PersonModel> personModel = [];
-          for (var person in data) {
-            PersonModel sPerson = PersonModel.fromJson(person);
-            personModel.add(sPerson);
+          List<SpeciesModel> speciesModel = [];
+          for (var species in data) {
+            SpeciesModel singleSpecies = SpeciesModel.fromJson(species);
+            speciesModel.add(singleSpecies);
           }
           return ResponseState(
-              statusCode: jsonData.statusCode, data: personModel);
+              statusCode: jsonData.statusCode, data: speciesModel);
         }
       } else {
         return ResponseState.error();

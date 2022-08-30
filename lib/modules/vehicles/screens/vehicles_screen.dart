@@ -1,42 +1,42 @@
-import 'package:cat_task/modules/people/screens/person_screen.dart';
-import 'package:cat_task/modules/people/view_models/people_view_model.dart';
-import 'package:cat_task/modules/people/view_models/person_view_model.dart';
+import 'package:cat_task/modules/vehicles/screens/single_vehicle_screen.dart';
+import 'package:cat_task/modules/vehicles/view_models/single_vehicle_view_model.dart';
+import 'package:cat_task/modules/vehicles/view_models/vehicles_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PeopleScreen extends StatelessWidget {
-  const PeopleScreen({Key? key}) : super(key: key);
+class VehiclesScreen extends StatelessWidget {
+  const VehiclesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<PeopleViewModel>();
-    final people = viewModel.people;
+    final viewModel = context.watch<VehiclesViewModel>();
+    final vehicles = viewModel.vehicle;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'People',
+          'Vehicles',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
       ),
       body: ListView(
         padding: const EdgeInsets.only(top: 20.0),
         children: [
-          for (final person in people)
+          for (final vehicle in vehicles)
             InkWell(
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => Provider(
-                      child: const PersonScreen(),
-                      create: (_) => PersonViewModel(person: person)),
+                      child: const SingleVehicleScreen(),
+                      create: (_) => SingleVehicleViewModel(vehicle: vehicle)),
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    person.name,
+                    vehicle.name,
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),

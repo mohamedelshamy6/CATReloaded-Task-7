@@ -1,9 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_task/modules/anime/view_models/single_anime_view_model.dart';
+import 'package:cat_task/modules/locations/view_models/all_locations_view_model.dart';
 import 'package:cat_task/modules/people/screens/people_screen.dart';
 import 'package:cat_task/modules/people/view_models/people_view_model.dart';
+import 'package:cat_task/modules/species/screens/species_screen.dart';
+import 'package:cat_task/modules/species/view_models/species_view_model.dart';
+import 'package:cat_task/modules/vehicles/screens/vehicles_screen.dart';
+import 'package:cat_task/modules/vehicles/view_models/vehicles_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../locations/screens/all_location_screen.dart';
 
 class SingleAnimeScreen extends StatelessWidget {
   const SingleAnimeScreen({Key? key}) : super(key: key);
@@ -39,7 +46,8 @@ class SingleAnimeScreen extends StatelessWidget {
                   Expanded(
                     child: Text(
                       sAnime.description,
-                      style: const TextStyle(fontSize: 20, color: Colors.white70),
+                      style:
+                          const TextStyle(fontSize: 20, color: Colors.white70),
                     ),
                   ),
                   Expanded(
@@ -60,16 +68,36 @@ class SingleAnimeScreen extends StatelessWidget {
             customColumn(
                 'People',
                 context,
-                Provider(
-                    create: (_) => PeopleViewModel(peopleUrl: [sAnime.people])
-                      ..getPeople(),
+                ChangeNotifierProvider(
+                    create: (_) =>
+                        PeopleViewModel(peopleUrl: sAnime.people)..getPeople(),
                     child: const PeopleScreen())),
             const SizedBox(height: 10.0),
-            customColumn('Locations', context, const PeopleScreen()),
+            customColumn(
+                'Locations',
+                context,
+                ChangeNotifierProvider(
+                    create: (_) =>
+                        LocationViewModel(locationUrl: sAnime.locations)
+                          ..getLocations(),
+                    child: const AllLocationScreen())),
             const SizedBox(height: 10.0),
-            customColumn('Species', context, const PeopleScreen()),
+            customColumn(
+                'Species',
+                context,
+                ChangeNotifierProvider(
+                    create: (_) => SpeciesViewModel(speciesUrl: sAnime.species)
+                      ..getSpecies(),
+                    child: const SpeciesScreen())),
             const SizedBox(height: 10.0),
-            customColumn('Vehicles', context, const PeopleScreen()),
+            customColumn(
+                'Vehicles',
+                context,
+                ChangeNotifierProvider(
+                    create: (_) =>
+                        VehiclesViewModel(vehiclesUrl: sAnime.vehicles)
+                          ..getVehicles(),
+                    child: const VehiclesScreen())),
           ],
         ),
       ),
@@ -83,7 +111,7 @@ class SingleAnimeScreen extends StatelessWidget {
           color: Colors.white,
           thickness: 2,
         ),
-        GestureDetector(
+        InkWell(
           onTap: () => Navigator.push(
               context,
               MaterialPageRoute(

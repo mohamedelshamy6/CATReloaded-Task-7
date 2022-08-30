@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class PeopleViewModel with ChangeNotifier {
   final List peopleUrl;
-  final List<PeopleModel> people = [];
+  final List<PersonModel> people = [];
 
   PeopleViewModel({required this.peopleUrl});
 
