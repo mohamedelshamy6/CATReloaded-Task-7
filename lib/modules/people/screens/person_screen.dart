@@ -22,6 +22,7 @@ class PersonScreen extends StatelessWidget {
           children: [
             Text(
               'ID : ${person.id}',
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

@@ -22,6 +22,7 @@ class SingleVehicleScreen extends StatelessWidget {
           children: [
             Text(
               'ID : ${vehicle.id}',
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
@@ -33,6 +34,8 @@ class SingleVehicleScreen extends StatelessWidget {
             Text(
               'Description : ${vehicle.description}',
               style: const TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+              softWrap: true,
             ),
             const SizedBox(height: 10),
             Text(

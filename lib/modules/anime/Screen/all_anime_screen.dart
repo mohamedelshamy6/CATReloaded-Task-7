@@ -42,57 +42,64 @@ class MyBody extends StatelessWidget {
     final viewModel = context.watch<AnimeViewModel>();
     final allAnime = viewModel.anime?.data ?? [];
 
-    return ListView.builder(
-      padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
-      itemBuilder: (context, index) {
-        var anime = allAnime[index];
-        return GestureDetector(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Provider(
-                  child: const SingleAnimeScreen(),
-                  create: (_) => SingleAnimeViewModel(sAnime: anime)),
+    if (allAnime.isNotEmpty) {
+      return ListView.builder(
+        padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+        itemBuilder: (context, index) {
+          var anime = allAnime[index];
+          return GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Provider(
+                    child: const SingleAnimeScreen(),
+                    create: (_) => SingleAnimeViewModel(sAnime: anime)),
+              ),
             ),
-          ),
-          child: Container(
-            margin: const EdgeInsets.only(bottom: 15.0),
-            padding: const EdgeInsets.only(bottom: 10.0),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10.0)),
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0)),
-                  child: CachedNetworkImage(
-                    imageUrl: anime.banner,
-                    placeholder: (_, __) => const CircularProgressIndicator(
-                      strokeWidth: 3.0,
-                      color: Colors.black,
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 15.0),
+              padding: const EdgeInsets.only(bottom: 10.0),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0)),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(10.0),
+                        topLeft: Radius.circular(10.0)),
+                    child: CachedNetworkImage(
+                      imageUrl: anime.banner,
+                      placeholder: (_, __) => const CircularProgressIndicator(
+                        strokeWidth: 3.0,
+                        color: Colors.black,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Center(child: Text('Error occurred')),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Center(child: Text('Error occurred')),
                   ),
-                ),
-                Text(
-                  '${anime.title}\n ${anime.japaneseTitle}',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Text(
-                  anime.description,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.grey, fontSize: 18),
-                ),
-              ],
+                  Text(
+                    '${anime.title}\n ${anime.japaneseTitle}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    anime.description,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      },
-      itemCount: allAnime.length,
-    );
+          );
+        },
+        itemCount: allAnime.length,
+      );
+    } else {
+      return const Center(
+        child: CircularProgressIndicator(color: Colors.black, strokeWidth: 5.0),
+      );
+    }
   }
 }

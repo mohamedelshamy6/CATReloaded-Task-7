@@ -22,6 +22,7 @@ class SingleLocationScreen extends StatelessWidget {
           children: [
             Text(
               'ID : ${singleLocation.id}',
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

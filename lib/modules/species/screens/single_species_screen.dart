@@ -22,6 +22,7 @@ class SingleSpeciesScreen extends StatelessWidget {
           children: [
             Text(
               'ID : ${singleSpecies.id}',
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
@@ -37,11 +38,15 @@ class SingleSpeciesScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               'Hair colors : ${singleSpecies.hairColors}',
+              textAlign: TextAlign.center,
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
               'Eye colors : ${singleSpecies.eyeColors}',
+              textAlign: TextAlign.center,
+              softWrap: true,
               style: const TextStyle(fontSize: 18),
             ),
           ],
